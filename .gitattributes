@@ -6,7 +6,6 @@
 *.zap text eol=lf
 *.xzap text eol=lf
 *.mud text eol=lf
-*.errors correction
 *.cmp text eol=lf 
 *.c text eol=lf
 *.h text eol=lf
