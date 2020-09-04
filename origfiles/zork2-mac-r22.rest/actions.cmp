@@ -1,0 +1,64 @@
+
+;COMPARISON OF SS:<ZORK2.R22MAC>ACTIONS.ZIL.524 AND SS:<ZORK2.R22MAC>ACTIONS.ZIL.526
+;OPTIONS ARE    /1
+
+**** FILE SS:<ZORK2.R22MAC>ACTIONS.ZIL.524, 3-120 (29770)
+	 <COND (<VERB? EAT>
+**** FILE SS:<ZORK2.R22MAC>ACTIONS.ZIL.526, 3-120 (29770)
+	 <COND (<VERB? EXAMINE READ>
+	       <PUT 0 8 <BOR <GET 0 8> 2>>
+	       <TELL
+"      Frobozz Magic Candy Company|
+        >> Special Assortment <<|
+          Candied Grasshoppers|
+             Chocolated Ants|
+              Worms Glacee|
+(By Appointment to His Majesty, Dimwit I)|
+">
+	       <PUT 0 8 <BAND <GET 0 8> -3>>
+	       <RTRUE>)
+	       (<VERB? EAT>
+***************
+
+**** FILE SS:<ZORK2.R22MAC>ACTIONS.ZIL.524, 9-981 (123073)
+;"the end"
+**** FILE SS:<ZORK2.R22MAC>ACTIONS.ZIL.526, 9-981 (123426)
+<ROUTINE TOP-ETCHINGS-F ()
+	<COND (<VERB? EXAMINE READ>
+	       <PUT 0 8 <BOR <GET 0 8> 2>>
+	       <TELL
+"       o  b  o|
+   r             z|
+f   M  A  G  I  C   z|
+c    W  E   L  L    y|
+   o             n|
+       m  p  a|
+">
+	       <PUT 0 8 <BAND <GET 0 8> -3>>
+	       <RTRUE>)>>
+<ROUTINE BOTTOM-ETCHINGS-F ()
+	<COND (<VERB? EXAMINE READ>
+	       <PUT 0 8 <BOR <GET 0 8> 2>>
+	       <TELL
+"       o  b  o|
+|
+       A  G  I|
+         E L|
+|
+       m  p  a|
+">
+	       <PUT 0 8 <BAND <GET 0 8> -3>>
+	       <RTRUE>)>>
+<ROUTINE CUBE-F ()
+	<COND (<VERB? EXAMINE READ>
+	       <PUT 0 8 <BOR <GET 0 8> 2>>
+	       <TELL
+"              Bank of Zork|
+                   VAULT|
+                 *722 GUE*|
+        Frobozz Magic Vault Company|
+">
+	       <PUT 0 8 <BAND <GET 0 8> -3>>
+	       <RTRUE>)>>
+"the end"
+***************

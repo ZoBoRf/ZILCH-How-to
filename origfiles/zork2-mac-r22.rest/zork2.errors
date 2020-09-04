@@ -1,0 +1,21 @@
+Assembling ZORK2.XZAP.10
+
+
+Inserting ZORK2FREQ.XZAP.5	(  616 bytes)
+Inserting ZORK2DAT.ZAP.1	(17170 bytes)
+Inserting DUNGEON.ZAP.1	(    0 bytes)
+Inserting SYNTAX.ZAP.1	(    0 bytes)
+Inserting MACROS.ZAP.1	(   42 bytes)
+Inserting CLOCK.ZAP.1	(  197 bytes)
+Inserting MAIN.ZAP.1	(  628 bytes)
+Inserting PARSER.ZAP.1	( 4076 bytes)
+Inserting DEMONS.ZAP.1	(  277 bytes)
+Inserting CRUFTY.XZAP.7	(   89 bytes)
+Inserting VERBS.ZAP.1	( 9969 bytes)
+Inserting ACTIONS.ZAP.1	(32301 bytes)
+Inserting ZORK2STR.ZAP.1	(17699 bytes)
+17850 bytes of preload.
+
+83128 bytes (82K).
+244 objects.
+147 globals.

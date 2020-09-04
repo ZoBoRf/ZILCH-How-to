@@ -1,0 +1,55 @@
+
+;COMPARISON OF SS:<ZORK2.R22MAC>DUNGEON.ZIL.297 AND SS:<ZORK2.R22MAC>DUNGEON.ZIL.299
+;OPTIONS ARE    /1
+
+**** FILE SS:<ZORK2.R22MAC>DUNGEON.ZIL.297, 10-350 (61382)
+	(VALUE 15)
+	(TEXT
+"       Frobozz Magic Candy Company|
+         >>Special Assortment <<|
+          Candied Grasshoppers|
+             Chocolated Ants|
+              Worms Glacee|
+(By Appointment to His Majesty, Dimwit I)|
+")>
+**** FILE SS:<ZORK2.R22MAC>DUNGEON.ZIL.299, 10-350 (61382)
+	(VALUE 15)>
+***************
+
+**** FILE SS:<ZORK2.R22MAC>DUNGEON.ZIL.297, 10-365 (61747)
+	(TEXT
+"       o  b  o|
+   r             z|
+f   M  A  G  I  C   z|
+c    W  E   L  L    y|
+   o             n|
+       m  p  a
+" )>
+**** FILE SS:<ZORK2.R22MAC>DUNGEON.ZIL.299, 10-357 (61525)
+	(ACTION TOP-ETCHINGS-F)>
+***************
+
+**** FILE SS:<ZORK2.R22MAC>DUNGEON.ZIL.297, 10-379 (62020)
+	(TEXT
+"       o  b  o|
+|
+       A  G  I|
+         E L|
+|
+       m  p  a|
+" )>
+**** FILE SS:<ZORK2.R22MAC>DUNGEON.ZIL.299, 10-364 (61687)
+	(ACTION BOTTOM-ETCHINGS-F)>
+***************
+
+**** FILE SS:<ZORK2.R22MAC>DUNGEON.ZIL.297, 10-510 (65463)
+	(TEXT	
+"              Bank of Zork|
+                   VAULT|
+                 *722 GUE*|
+        Frobozz Magic Vault Company|
+")>
+**** FILE SS:<ZORK2.R22MAC>DUNGEON.ZIL.299, 10-488 (65073)
+	(ACTION CUBE-F)>
+***************
+

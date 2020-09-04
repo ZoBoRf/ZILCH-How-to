@@ -1,0 +1,15 @@
+# disable automatic handling of line endings
+* text=false
+# Explicitly declare text files you want to always be normalized and converted
+# to native line endings on checkout.
+*.c text eol=lf
+*.h text eol=lf
+*.w text eol=lf
+*.sty text eol=lf
+*.tex text eol=lf
+*.bib text eol=lf
+*.el text eol=lf
+*.vim text eol=lf
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
