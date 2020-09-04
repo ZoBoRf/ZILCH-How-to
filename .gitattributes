@@ -2,10 +2,12 @@
 * text=false
 # Explicitly declare text files you want to always be normalized and converted
 # to native line endings on checkout.
-*.zil text eol=lf
+*.zil text eol=lf 
 *.zap text eol=lf
 *.xzap text eol=lf
 *.mud text eol=lf
+*.errors correction
+*.cmp text eol=lf 
 *.c text eol=lf
 *.h text eol=lf
 *.w text eol=lf
