@@ -1703,7 +1703,7 @@ ZORK2DAT.zap:945: warning: incorrect table size: expected 2357, actual 2258
 Wrote 93630 bytes to zork2.z3
 ```
 
-Try the file zork2.z3 with `Windows Frotz`:
+Try the resulting story file `zork2.z3` with `Windows Frotz`:
 ```
 ZORK II: The Wizard of Frobozz
 Copyright 1981 by Infocom, Inc.
