@@ -1609,7 +1609,7 @@ hg clone https://foss.heptapod.net/zilf/zilf
 cd zilf
 dotnet msbuild Build.proj -t:PackageAllRids -p:Configuration=Release
 ```
-Copy all `ZAP` files create by `ZILCH`
+Copy all `ZAP` files created by `ZILCH`
 to  [out/](out/) directory and rename the following ones from the `ITS` 
 six characters to their full length:
 ```
