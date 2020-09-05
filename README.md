@@ -302,7 +302,7 @@ the missing first line:
 * `zork2freq.xzap`
 
 The frequent words file defines
-the word frquency table with the 96 most common words:
+the word frequency table with the 96 most common words:
 
 ```
         .FSTR FSTR?1,"the "        ;1642      821
@@ -895,29 +895,29 @@ Now is a good time to read some user documentation:
 
 ### Included Files
 
-| src file      | taken from | 
-| -----------   | ---------- |
-| [`z.mud`     ](src/z.mud)      | to create save file `DSK:Z2; Z SAVE` | 
-| [`z2.mud`    ](src/z2.mud)     | to call `<ZILCH ...` directly | 
-|                         |            |
-| [`zilch.mud` ](src/zilch.mud)  | https://github.com/PDP-10/zil/blob/master/zork.z/zilch.mud.188 | 
-|                         | https://github.com/PDP-10/zil/blob/master/zork.z/zstr.mud.2 | 
+| src file                       | taken from | 
+| ------------------------------ | ---------- |
+| [`z.mud`](src/z.mud)           | to create save file `DSK:Z2; Z SAVE` | 
+| [`z2.mud`](src/z2.mud)         | to call `<ZILCH ...` directly | 
+|                                |            |
+| [`zilch.mud`](src/zilch.mud)   | https://github.com/PDP-10/zil/blob/master/zork.z/zilch.mud.188 | 
+|                                | https://github.com/PDP-10/zil/blob/master/zork.z/zstr.mud.2 | 
 | [`macros.mud`](src/macros.mud) | [`macros.zil`](src/macros.zil) | 
-| [`sort.mud`  ](src/sort.mud)   | https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/sortx.mud | 
-| [`trace.mud` ](src/trace.mud)  | https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/trace.mud | 
+| [`sort.mud`](src/sort.mud)     | https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/sortx.mud | 
+| [`trace.mud`](src/trace.mud)   | https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/trace.mud | 
 | [`nstruc.mud`](src/nstruc.mud) | https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/newstruc.mud | 
 | [`pprint.mud`](src/pprint.mud) | https://github.com/PDP-10/muddle/blob/master/MUDDLE/pprint.1 | 
-|                         |            |
-| [`zork2.zil` ](src/zork2.zil)  | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
+|                                |            |
+| [`zork2.zil`](src/zork2.zil)   | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
 | [`dungeo.zil`](src/dungeo.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
 | [`syntax.zil`](src/syntax.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
 | [`macros.zil`](src/macros.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
-| [`clock.zil` ](src/clock.zil)  | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
-| [`main.zil`  ](src/main.zil)   | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
+| [`clock.zil`](src/clock.zil)   | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
+| [`main.zil`](src/main.zil)     | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
 | [`parser.zil`](src/parser.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
 | [`demons.zil`](src/demons.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
 | [`crufty.zil`](src/crufty.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
-| [`verbs.zil` ](src/verbs.zil)  | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
+| [`verbs.zil`](src/verbs.zil)   | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
 | [`action.zil`](src/action.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
 
 ### Problems
@@ -1131,7 +1131,7 @@ kdiff3 origfiles\mimlib\trace.mud src\trace.mud
 kdiff3 origfiles\zork2-mac-r22.zil\zork2.zil src\zork2.zi
 ```
 
-## Transfering All Files to `ITS`
+## Transferring All Files to `ITS`
 
 Create a new directory `Z2`
 ```
@@ -1597,14 +1597,179 @@ with two exceptions.
                (T <TELL CR "** Game File Failure **" CR>)>>
    ```
 
-### Compiling with ZILF
+### Compiling with `ZILF`
 
-## Documenting ZILCH
+Let's try to build it with `ZILF`.
+I use *Windows 7* here.
+First get and build `ZILF`:
+```
+cd C:\storage\project\if\
+mkdir zilf-0.9
+hg clone https://foss.heptapod.net/zilf/zilf
+cd zilf
+dotnet msbuild Build.proj -t:PackageAllRids -p:Configuration=Release
+```
+Copy all `ZAP` files create by `ZILCH`
+to `out` directory and rename the following ones from the `ITS` 
+six characters to their full length:
+```
+># cd C:\storage\project\if\zilch.github\out
+C:\storage\project\if\zilch.github\out># move ACTION.ZAP ACTIONS.ZAP
+C:\storage\project\if\zilch.github\out># move DUNGEO.ZAP DUNGEON.ZAP
+C:\storage\project\if\zilch.github\out># move ZORK2D.ZAP ZORK2DAT.ZAP
+C:\storage\project\if\zilch.github\out># move ZORK2S.ZAP ZORK2STR.ZAP
+C:\storage\project\if\zilch.github\out># dir
+ACTIONS.ZAP
+CLOCK.ZAP
+CRUFTY.ZAP
+DEMONS.ZAP
+DUNGEON.ZAP
+MACROS.ZAP
+MAIN.ZAP
+PARSER.ZAP
+SYNTAX.ZAP
+VERBS.ZAP
+ZORK2.ZAP
+ZORK2DAT.ZAP
+ZORK2STR.ZAP
+```
+Try to build with `ZAPF`:
+```
+C:\storage\project\if\zilch.github\out># C:\storage\project\if\zilf-0.9\zilf\Package\Release\Stage\zilf-0.9.0-win-x64\bin\Zapf.exe zork2.zap
+ZAPF 0.9
+Reading zork2.zap
+Reading ZORK2DAT.zap
+Reading DUNGEON.zap
+Reading SYNTAX.zap
+Reading MACROS.zap
+Reading CLOCK.zap
+Reading MAIN.zap
+Reading PARSER.zap
+Reading DEMONS.zap
+Reading CRUFTY.zap
+Reading VERBS.zap
+Reading ACTIONS.zap
+Reading ZORK2STR.zap
+MeasuringZORK2DAT.zap:945: warning: incorrect table size: expected 2357, actual 2258
+.ZORK2DAT.zap:945: warning: incorrect table size: expected 2357, actual 2258
+.ZORK2DAT.zap:945: warning: incorrect table size: expected 2357, actual 2258
+
+error: required global symbol 'WORDS' is missing
+
+Failed (1 error)
+```
+OK, create an empty frequent words file:
+```
+C:\storage\project\if\zilch.github\out># type zork2word.xzap
+
+
+;word frequency table of 96 most common words
+
+WORDS:: .TABLE
+        .ENDT
+
+        .ENDI 
+```
+
+Add a new first line to `ZORK2.ZAP`:
+```
+        .INSERT "ZORK2WORD"
+```
+Try another time:
+```
+C:\storage\project\if\zilch.github\out>C:\storage\project\if\zilf-0.9\zilf\Package\Release\Stage\zilf-0.9.0-win-x64\bin\Zapf.exe zor
+k2.zap
+ZAPF 0.9
+Reading zork2.zap
+Reading ZORK2WORD.xzap
+Reading ZORK2DAT.zap
+Reading DUNGEON.zap
+Reading SYNTAX.zap
+Reading MACROS.zap
+Reading CLOCK.zap
+Reading MAIN.zap
+Reading PARSER.zap
+Reading DEMONS.zap
+Reading CRUFTY.zap
+Reading VERBS.zap
+Reading ACTIONS.zap
+Reading ZORK2STR.zap
+MeasuringZORK2DAT.zap:945: warning: incorrect table size: expected 2357, actual 2258
+.ZORK2DAT.zap:945: warning: incorrect table size: expected 2357, actual 2258
+.ZORK2DAT.zap:945: warning: incorrect table size: expected 2357, actual 2258
+
+Assembling
+ZORK2DAT.zap:945: warning: incorrect table size: expected 2357, actual 2258
+Wrote 93630 bytes to zork2.z3
+```
+
+Try the file zork2.z3 with `Windows Frotz`:
+```
+ZORK II: The Wizard of Frobozz
+Copyright 1981 by Infocom, Inc.
+All rights reserved.
+ZORK is a trademark of Infocom, Inc.
+Release 42 / Serial number 200905
+
+Inside the Barrow
+You are inside an ancient barrow hidden deep within a dark forest. The barrow opens into a narrow tunnel at its southern end. You can see a faint glow at the far end.
+A sword of Elvish workmanship is on the ground.
+A strangely familiar brass lantern is lying on the ground.
+
+>zork
+At your service!
+
+>
+```
+Let's try the original `zork2freq.xzap`. Copy it to out,
+change the first line in zork2.zap to
+```
+        .INSERT "zork2freq"
+```
+and `ZAPF` it once more
+```
+C:\storage\project\if\zilch.github\out>C:\storage\project\if\zilf-0.9\zilf\Package\Release\Stage\zilf-0.9.0-win-x64\bin\Zapf.exe zor
+k2.zap
+ZAPF 0.9
+Reading zork2.zap
+Reading zork2freq.xzap
+Reading ZORK2DAT.zap
+Reading DUNGEON.zap
+Reading SYNTAX.zap
+Reading MACROS.zap
+Reading CLOCK.zap
+Reading MAIN.zap
+Reading PARSER.zap
+Reading DEMONS.zap
+Reading CRUFTY.zap
+Reading VERBS.zap
+Reading ACTIONS.zap
+Reading ZORK2STR.zap
+MeasuringZORK2DAT.zap:945: warning: incorrect table size: expected 2357, actual 2258
+.ZORK2DAT.zap:945: warning: incorrect table size: expected 2357, actual 2258
+.ZORK2DAT.zap:945: warning: incorrect table size: expected 2357, actual 2258
+
+Assembling
+ZORK2DAT.zap:945: warning: incorrect table size: expected 2357, actual 2258
+Wrote 82932 bytes to zork2.z3
+```
+
+The resulting story file `zork2.z3` is now about 10 kB smaller 	
+	
+```
+93630 bytes with dummy frequent words file
+82932 bytes with the original frequent words file
+10698 bytes smaller
+```
+
+And it works as well.
+
+## Documenting `ZILCH`
 
 Since `ZILCH` delivers quite reasonable results, 
 the work on its documentation is justified 
 and also with regard to its historical significance.
-Let's make **ZILCH: The Program**.
+Let's make **`ZILCH`: The Program**.
 
 ## Future Perspectives
 
@@ -1614,10 +1779,12 @@ Looking into
 * `zip.mud.96` the *Zork Interpreter Program*
 * `zap.mud.171` the *Zork Assembler Program*
 
-
 ## ToDo
 
 * no `<VERIFY>`, implement it
 * document `macros.mud`
 * use Debian only (because of problems with Ubuntu)
 * test current Debian distibution
+* look for the reason for the `zapf` warning: 
+  ZORK2DAT.zap:945: warning: incorrect table size: expected 2357, actual 2258
+
