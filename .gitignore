@@ -50,3 +50,4 @@
 *.idb
 *.pdb
 
+/README.md.html

@@ -12,10 +12,10 @@ used to build them. (My fascination was only the slowed down by the language.
 I had to learn English first.)
 
 Best known are the articles
+  * Lebling, Blank and Anderson, "[Special Feature Zork: A Computerized Fantasy Simulation Game](https://www.computer.org/csdl/magazine/co/1979/04/01658697/13rRUwfqpJ1)", in Computer, vol. 12, no. 4, pp. 51-59, April 1979, doi: 10.1109/MC.1979.1658697.
   * Marc S. Blank und S. W. Galley, "[How to Fit a Large Program Into a Small Machine](https://archive.org/details/creativecomputing-1980-07/page/n81/mode/1up)
     or How to fit the Great Underground Empire on your desk-top"
     in Creative Computing, vol 6 no 7, pp. 80-88, July 1980, and
-  * Lebling, Blank and Anderson, "[Special Feature Zork: A Computerized Fantasy Simulation Game](https://www.computer.org/csdl/magazine/co/1979/04/01658697/13rRUwfqpJ1)", in Computer, vol. 12, no. 4, pp. 51-59, April 1979, doi: 10.1109/MC.1979.1658697.
   * P. David Lebling, "[Zork and the Future of Computerized Fantasy Simulations](https://archive.org/details/byte-magazine-1980-12/page/n173/mode/1up)" BYTE Magazine, pp. 172-182 December 1980.
 
 And then there is "[Down From the Top of Its Game - The Story of Infocom, Inc.](http://web.mit.edu/6.933/www/Fall2000/infocom/infocom-paper.pdf)"
@@ -26,10 +26,10 @@ and for many years it was thought the tools
 their legendary interactive fiction works was lost forever.
 
 Then 2008 [Andy Baio](https://twitter.com/waxpancake) made public
-[details](https://waxy.org/2008/04/milliways_infocoms_unreleased_sequel_to_hitchhikers_guide_to_the_galax/)
+[details](https://waxy.org/2008/04/milliways_infocoms_unreleased_sequel_to_hitchhikers_guide_to_the_galax/) ([What a lose](http://www.catb.org/~esr/jargon/html/L/lose.html)!)
 from the legendary Infocom Drive. An anonymous source close to the company
 gave him a complete backup of Infocom's shared network drive from 1989.
-[What a lose](http://www.catb.org/~esr/jargon/html/L/lose.html)!
+
 
 At PAX East 2010 someone "lost" some
 [USB Drives](http://www.ifwiki.org/index.php/PAX_USB_Drive),
@@ -70,7 +70,7 @@ was running at:
 
 ![Z-machine tool chain](images/Z-machine-ToolChain.png)
 
-The second one illustrates a code snippet which illustrates the
+The second one shows a code snippet which illustrates the
 translation process from `ZIL` to `ZAP` accomplished by `ZILCH`,
 the `ZIL Compiler`. The slide comparses the `ZIL` `MATCH-FCN` routine
 in source and compiled form. This was the first time I saw a direct comparison
@@ -79,7 +79,7 @@ between `ZIL` and `ZAP` code.
 ![From ZIL to ZAP](images/ZIL-to-ZAP.png)
 
 The third slide shows the difference between Muddle code used in the original
-mainframe Muddle [Zork](https://github.com/PDP-10/zork-1) and the ZIL-Zork
+mainframe Muddle [Zork](https://github.com/PDP-10/zork-1) and the ZIL Zork
 objects.
 
 At Apr 16, 2019 Jason Scott, the best known internet archivist
@@ -105,7 +105,7 @@ single commit to the [https://github.com/PDP-10/zil](https://github.com/PDP-10/z
 GitHub repository.
 So I can safely say that April 2019 was one of the most exciting months of my life.
 
-Here are the contents of the `ZIL` repository:
+Here are the contents of the [https://github.com/PDP-10/zil](https://github.com/PDP-10/zil) repository:
 ```
 <ZORK.Z>APPLY.MUD.1       Mar  5  1981
 <ZORK.Z>GETSTR.MUD.2      Nov  5  1979
@@ -130,7 +130,8 @@ the [MIT Tapes of Tech Square (ToTS)](https://archivesspace.mit.edu/repositories
 Sep 01, 2020 I asked him on the IRC channel #pdp-10 on freenode
 
 > ```
-> <ZoBoRf> larsb: Where did the files in https://github.com/PDP-10/zil originally come from?
+> <ZoBoRf> larsb: Where did the files in 
+>          https://github.com/PDP-10/zil originally come from?
 > <larsb> I think from the Infocom drive.
 > <larsb> No, that's not right.
 > <larsb> That's from a MIT TOPS-20 machine.
@@ -150,7 +151,7 @@ Sep 01, 2020 I asked him on the IRC channel #pdp-10 on freenode
 > <larsb> There's some public information.
 > ```
 
-### Distant Goal: Literate Version of `ZILCH: The Program`
+### Distant Goal: Literate Version of **ZILCH: The Program**
 
 Now, that I know there is a `ZILCH` compiler available,
 my idea is to document it in a [literate programming](http://www.literateprogramming.com/) style,
@@ -884,19 +885,40 @@ Now is a good time to read some user documentation:
 
 ## Preparing ZILCH and ZORK II
 
-### Getting ZILCH
+### Included Files
 
+| src file      | taken from | 
+| -----------   | ---------- |
+| [`z.mud`     ](src/z.mud)      | to create save file `DSK:Z2; Z SAVE` | 
+| [`z2.mud`    ](src/z2.mud)     | to call `<ZILCH ...` directly | 
+|                         |            |
+| [`zilch.mud` ](src/zilch.mud)  | https://github.com/PDP-10/zil/blob/master/zork.z/zilch.mud.188 | 
+|                         | https://github.com/PDP-10/zil/blob/master/zork.z/zstr.mud.2 | 
+| [`macros.mud`](src/macros.mud) | [`macros.zil`](src/macros.zil) | 
+| [`sort.mud`  ](src/sort.mud)   | https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/sortx.mud | 
+| [`trace.mud` ](src/trace.mud)  | https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/trace.mud | 
+| [`nstruc.mud`](src/nstruc.mud) | https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/newstruc.mud | 
+| [`pprint.mud`](src/pprint.mud) | https://github.com/PDP-10/muddle/blob/master/MUDDLE/pprint.1 | 
+|                         |            |
+| [`zork2.zil` ](src/zork2.zil)  | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
+| [`dungeo.zil`](src/dungeo.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
+| [`syntax.zil`](src/syntax.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
+| [`macros.zil`](src/macros.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
+| [`clock.zil` ](src/clock.zil)  | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
+| [`main.zil`  ](src/main.zil)   | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
+| [`parser.zil`](src/parser.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
+| [`demons.zil`](src/demons.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
+| [`crufty.zil`](src/crufty.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
+| [`verbs.zil` ](src/verbs.zil)  | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
+| [`action.zil`](src/action.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
 
-
-#### Included Files
-additional files needed with sources
-### Getting ZORK II
 ### Problems
 #### Buffer Flush Problem
 and workaround
 #### GC Problem
 and possible workarounds
-### Making Changes
+### Changes Made
+
 ## Transfering All Files to `ITS`
 
 Create a new directory `Z2`
