@@ -438,15 +438,16 @@ Here is how Marc Blank describes "The Z System" in his [*ZIL Course*](https://gi
 form `ROUTINE` (look up the term `FORM` in ["The MDL Programming Language"](https://github.com/ZoBoRf/mdl-docs/blob/master/tex/mdl.pdf)).
 
 When we look at the following `ZIL` files,
-we will see only forms, which build data structures
-saved in different tables.
+we will only see data structure building forms.
+The data structures appear as tables in the output.
 
 | `ZIL` file    | `ZILCH` forms used      |
 | ------------- | ----------------------- |
 | `dungeon.zil` | `OBJECT` and `ROOM`     |
 | `syntax.zil`  | `SYNTAX` and `SYNONYM`  |
 
-The structures built and variables used are output to the file `zork2dat.zap`.
+The structures built and variables used are output
+into the file `zork2dat.zap`.
 
 * `dungeon.zap` and `syntax.zap`
 
@@ -498,15 +499,17 @@ START::
 `ZIL` routines contain *Z codes*
 i.e. [Z Machine](http://inform-fiction.org/zmachine/standards/) instructions
 and pseudo opcodes which controls the `ZAP` assembler.
-Joel M. Berez documented ZAP
+Joel M. Berez documented `ZAP`
 in [*ZAP: Z-language Assembly Program*](https://github.com/ZoBoRf/ZAPSpec).
+
 The original `ZIP` specification describing all *Z machine instructions*
-is here: https://github.com/heasm66/YZIP-Specifications/blob/master/source/spec-yzip.pdf
+is here: https://github.com/heasm66/YZIP-Specifications/blob/master/source/spec-yzip.pdf.
 Henrik Åsman has a nice new PDF version here:
-https://github.com/heasm66/YZIP-Specifications/blob/master/yzip%20specifications.pdf .
+https://github.com/heasm66/YZIP-Specifications/blob/master/yzip%20specifications.pdf.
+
 David Fillmore has a good compilation of the standards 
 here http://www.frobnitz.co.uk/zmachine/ and 
-here http://www.frobnitz.co.uk/zmachine/infocom/ .
+here http://www.frobnitz.co.uk/zmachine/infocom/.
 
 * `actions.cmp` and `dungeon.cmp`
 
@@ -548,8 +551,8 @@ zork2.zil  includes
 
 ### To run `ZILCH` `Muddle` is needed
 
-To run `ZILCH` we need a `Muddle` intepreter or a `Muddle` compiler.
-The problem is there is no running real Muddle on current platforms 
+To run `ZILCH` we need a `Muddle` interpreter or a `Muddle` compiler.
+Unfortunately there is no running real Muddle on *current* platforms 
 (Linux, Mac, Windows).
 A year ago I tried to run `ZILCH` on top of
 
@@ -577,7 +580,7 @@ treasures of DEC tapes by a group of enthusiasts around
 [Lars Brinkhoff](https://twitter.com/larsbrinkhoff)
 which documents their efforts here: https://github.com/PDP-10
 
-The problem was this Muddle has no working '<SORT ...' and `ZILCH` uses it at 
+The problem was this Muddle has no working `<SORT ...` and `ZILCH` uses it at 
 four places:
 
 ```
@@ -616,11 +619,10 @@ tool described in [The MDL Programming Environment by P. David Lebling](https://
 Section 3.6. "Execution Tracing".
 After I found the implementation for `<TRACE ...`
 in 
-`trace.mud`(https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/trace.mud), 
-`nstruc.mud`(https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/newstruc.mud) and 
-`pprint.mud`(https://github.com/PDP-10/muddle/blob/master/MUDDLE/pprint.1) from an older `ITS` `Muddle` implementation.
-
-First I `FLOADed` the files in the file `z2.mud` which calls `ZILCH`:
+[`trace.mud`](https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/trace.mud), 
+[`nstruc.mud`](https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/newstruc.mud) and 
+[`pprint.mud`](https://github.com/PDP-10/muddle/blob/master/MUDDLE/pprint.1) from an older `ITS` `Muddle` implementation,
+first I `FLOADed` the files in the file `z2.mud` (the bootstrap file which calls `ZILCH`):
 ```
 <FLOAD "PPRINT MUD">
 <FLOAD "NSTRUC MUD">
@@ -628,7 +630,7 @@ First I `FLOADed` the files in the file `z2.mud` which calls `ZILCH`:
 ...
 <FLOAD "SORT MUD">
 ```
-Then I have activated
+Then I activated the tracing for some constructs
 ```
 <TRACE NTH>
 <TRACE SORTEX>
@@ -637,12 +639,14 @@ Then I have activated
 <TRACE OPEN>
 <TRACE CLOSE>
 ```
-and could so fix some problems in `<SORTEX ...`.
+and could so fix some problems in the stolen `<SORTEX ...`.
 
 ![SORT fixes](images/SORT-fixes.png)
 
-Then I had major problems with a failing garbage collector.
-Fortunately the problems disappeared with the [efforts](https://github.com/PDP-10/its/pull/1928) of [Adam T. Sampson](https://github.com/atsampson),
+Farther I had major problems with a failing garbage collector.
+Fortunately the problems almost completely disappeared 
+thanks to the [efforts](https://github.com/PDP-10/its/pull/1928) 
+of [Adam T. Sampson](https://github.com/atsampson),
 so I could remove my GC workarounds.
 
 ## Preparing Virtual Linux Host(s)
@@ -680,7 +684,7 @@ Kernel: x86_64 Linux 3.16.0-10-amd64
 ```
 
 ## Preparing ITS
-### Cloning ITS Repo
+### Cloning the ITS Repo
 
 ```
 rob@debian:~$ cd ~rob
@@ -695,7 +699,7 @@ rob@debian:~/itsnew$ make EMULATOR=klh10
 rob@debian:~/itsnew$ cd ..
 rob@debian:~$ tar czvf itsnew.tgz itsnew
 ```
-Transfer itsnew.tgz to ubuntu.
+Transfer `itsnew.tgz` to ubuntu.
 
 On ubuntu:
 
@@ -710,7 +714,8 @@ rob@ubuntu:~/itsnew$ ./start
 The [*Incompatible Timsharing System* (`ITS`)](https://en.wikipedia.org/wiki/Incompatible_Timesharing_System) is idiosyncratic and it
 takes time to getting used to it.
 
-Pressing the `ALTMODE` key, means pressing the `ESC` key.
+If you stuble over it in the docs: 
+Pressing the `ALTMODE` key, means pressing the `ESC` key, 
 This will be echoed as a `$` character.
 
 Let's start `ITS`, login and create an user folder.
@@ -869,10 +874,10 @@ Shutting down...Bye!
 rob@ubuntu:~/itsnew$ 
 ```
 
-OK we can start and stop `ITS`!
-Now we are ready to create a new directory,
-FTP all the needed `ZILCH` and the `Zork II` files in it 
-and bring `ZILCH` into life again.
+OK, now we can start and stop `ITS` so
+we are ready to create a new directory,
+FTP all the needed `ZILCH` and the `Zork II` files into it 
+and bring `ZILCH` into life again after all this years.
 
 ### Learning the ITS Basics
 
@@ -916,11 +921,215 @@ Now is a good time to read some user documentation:
 | [`action.zil`](src/action.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
 
 ### Problems
+
 #### Buffer Flush Problem
-and workaround
+
+I have noticed that muddle does not write short files to disk.
+Lets first try an internal channel (cf. section 11.9 Internal CHANNELs ["The MDL Programming Language](https://github.com/ZoBoRf/mdl-docs/blob/master/tex/mdl.pdf)) (virtual file) to see on screen
+what should happen on open, write and close of a file.
+```
+*:muddle
+MUDDLE 56 IN OPERATION.
+LISTENING-AT-LEVEL 1 PROCESS 1
+<DEFINE FCN (C)
+        #DECL ((C) CHARACTER)
+        <PRINC .C>>$
+FCN
+<SET CHAN <OPEN "PRINT" "INT:" ,FCN>>$
+#CHANNEL [0 "PRINT" "INPUT" ">" "INT" "ROB" "INPUT" ">" "INT" "ROB" -1 
+23748404326 0 0 0 0 0 10 #FUNCTION ((C) #DECL ((C) CHARACTER) <PRINC .C>)]
+<PRINC "Hello!" .CHAN>$
+Hello!"Hello!"
+<CLOSE .CHAN>$
+#CHANNEL [0 "PRINT" "INPUT" ">" "INT" "ROB" "INPUT" ">" "INT" "ROB" -1 
+23085704385 0 6 0 0 6 10 #FUNCTION ((C) #DECL ((C) CHARACTER) <PRINC .C>)]
+<QUIT>$
+```
+When we save these lines to `FILTST MUD` and `FLOAD` them
+we get:
+```
+*:print filtst mud
+
+<DEFINE FCN (C)
+        #DECL ((C) CHARACTER)
+        <PRINC .C>>
+
+<SET CHAN <OPEN "PRINT" "INT:" ,FCN>>
+<PRINC "Hello!" .CHAN>
+<CLOSE .CHAN>
+*:muddle
+MUDDLE 56 IN OPERATION.
+LISTENING-AT-LEVEL 1 PROCESS 1
+<FLOAD "FILTST">$
+Hello!"DONE"
+```
+
+Now let's change the channel to a real file `FOO BAR`.
+```
+*:print filtst mud
+
+<DEFINE FCN (C)
+        #DECL ((C) CHARACTER)
+        <PRINC .C>>
+
+<SET CHAN <OPEN "PRINT" "FOO" "BAR">>
+<PRINC "Hello!" .CHAN>
+<CLOSE .CHAN>
+*:muddle
+<MUDDLE 56 IN OPERATION.
+LISTENING-AT-LEVEL 1 PROCESS 1
+FLOAD "FILTST">$
+"DONE"
+<QUIT>$
+
+:KILL 
+*:print foo bar
+
+*
+```
+
+`FOO BAR` is created, but empty.
+The closing alone should actually flush the buffers automatically.
+OK, nevertheless let's try to flush the buffer before closing the file.
+
+```
+*:print filtst mud
+
+<DEFINE FCN (C)
+        #DECL ((C) CHARACTER)
+        <PRINC .C>>
+
+<SET CHAN <OPEN "PRINT" "FOO" "BAR">>
+<PRINC "Hello!" .CHAN>
+<BUFOUT .CHAN>
+<CLOSE .CHAN>
+*:muddle
+MUDDLE 56 IN OPERATION.
+LISTENING-AT-LEVEL 1 PROCESS 1
+<FLOAD "FILTS">$
+"DONE"
+<QUIT>$
+
+:KILL
+*:print foo bar
+
+*
+```
+
+No change.
+Now let's put enough filler null bytes at the end to force a buffer flush.
+I don't know how many "enough" is. 1000 seem to be ok.
+
+```
+*:print filtst mud
+
+<DEFINE FCN (C)
+        #DECL ((C) CHARACTER)
+        <PRINC .C>>
+
+<SET CHAN <OPEN "PRINT" "FOO" "BAR">>
+<PRINC "Hello!" .CHAN>
+<PRINC <ISTRING 1000> .CHAN>
+<CLOSE .CHAN>
+*:muddle
+MUDDLE 56 IN OPERATION.
+LISTENING-AT-LEVEL 1 PROCESS 1
+<FLOAD "FILTST">$
+"DONE"
+<QUIT>$
+
+:KILL
+*:print foo bar
+
+Hello!
+^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^!
+@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@!
+^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^!
+@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@!
+^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^!
+@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@!
+^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^!
+@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@!
+^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^!
+@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@!
+^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^!
+@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@!
+^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^!
+@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@!
+^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^!
+@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@
+*
+```
+
+So my workaround for this problem is the function `FILFIL` (file fill),
+a call to I put into `ZILCH` before each `CLOSE`, except the close of
+the output channel of the compiler transcript on screen.
+```
+...
+<FILFIL .ZCHN>
+<CLOSE .ZCHN>
+...
+```
+
+```
+<DEFINE FILFIL (OUTCHAN)
+        #DECL ((OUTCHAN) <SPECIAL CHANNEL>)
+        ;<PRINC ";\"==================================================\"">
+        ;<CRLF>
+        <PRINC <ISTRING 1000>>>
+```
+The trailing null bytes aren't a problem, they are ignored on FTP ascii
+download and are also ignored by `emacs` on `ITS`.
+
+I tried the `FILTST` on `mdl106.exe` on `TOPS-20` with the Panda (http://panda.trailing-edge.com/, https://github.com/PDP-10/panda)
+distibution to. There the bug does not exist.
+
 #### GC Problem
-and possible workarounds
+
+Here are some workarounds I tried on problems with the 
+automatic garbage collector (AGC):
+
+* tweak the `<BLOAT ...` line in `zork2 zil`
+* put one or more `<GC>` calls between the `<IFILE ...` includes
+* use an `agc-handler`
+  ```
+  <DEFINE AGC-HANDLER (SIZE WHAT)
+          ;<PRINT "DIVERT-AGC SIZE=">
+          ;<PRINC .SIZE>
+          ;<PRINC " WHAT=">
+          ;<PRINC .WHAT>
+          ;<CRLF>
+          <BLOAT .SIZE>>
+  <ON "DIVERT-AGC" ,AGC-HANDLER 1>
+  ```
+
+  Section 21.8.5 "DIVERT-AGC" of ["The MDL Programming Language](https://github.com/ZoBoRf/mdl-docs/blob/master/tex/mdl.pdf) states:
+
+  > "DIVERT-AGC" ("Automatic Garbage Collection") occurs just **before** a 
+  > deferrable garbage collection that is needed because of exhausted movable
+  > garbage-collected storage. Enabling this interrupt is the only way
+  > a program can know that a garbage collection is about to occur. 
+  > A handler takes two arguments: `A FIX` telling the number of machine 
+  > words needed and an `ATOM` telling what initiated the garbage collection
+  > [...]. 
+  > **If it wishes, a handler can try to prevent a garbage collection by calling
+  > `BLOAT` with the `FIX` argument.** 
+  > If the pending request for garbage-collected storage cannot then be 
+  > satisfied, a garbage collection occurs anyway. 
+  > `AGC-FLAG` is `SET` to `T` while the handler is running, so that new 
+  > storage requests do not try to cause a garbage collection.
+
 ### Changes Made
+
+The best way to see the changes I made is to
+look at the diffs, e.g.
+
+```
+kdiff3 origfiles\zork.z.zilch\zilch.mud.188 src\zilch.mud
+kdiff3 origfiles\mimlib\sortx.mud src\sort.mud
+kdiff3 origfiles\mimlib\trace.mud src\trace.mud
+kdiff3 origfiles\zork2-mac-r22.zil\zork2.zil src\zork2.zi
+```
 
 ## Transfering All Files to `ITS`
 
@@ -1367,12 +1576,26 @@ ftp> quit
 
 When we trim the original `ZAP` file basenames to 6 characters
 and compare them to the generated ones, we notice they are identical
-except for `crufty.zap`:
+with two exceptions.
 
-![crufty diffs](images/crufty-diffs.png)
+* First: `crufty.zap`:
+  ![crufty diffs](images/crufty-diffs.png)
 
-This is probably why crufty was compiled in a different way 
-resulting in an `XZAP` file.
+  This is probably why crufty was compiled in a different way 
+  resulting in an `XZAP` file.
+
+* The second exception is the missing `<VERIFY>` opcode and the differences
+  as the result of commenting out the last line in `syntax.zil`
+   ```
+   ;<SYNTAX $VERIFY = V-$VERIFY>
+   ```
+   and the last routine in `verbs.zil`
+   ```
+   ;<ROUTINE V-$VERIFY ()
+         <TELL "Verifying game..." CR>
+         <COND (<VERIFY> <TELL "Game correct." CR>)
+               (T <TELL CR "** Game File Failure **" CR>)>>
+   ```
 
 ### Compiling with ZILF
 
@@ -1394,7 +1617,6 @@ Looking into
 
 ## ToDo
 
-* document problems with output buffer (`<BUFOUT ..` doesn't work, too)
 * no `<VERIFY>`, implement it
 * document `macros.mud`
 * use Debian only (because of problems with Ubuntu)
