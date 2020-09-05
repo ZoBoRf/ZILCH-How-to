@@ -1610,7 +1610,7 @@ cd zilf
 dotnet msbuild Build.proj -t:PackageAllRids -p:Configuration=Release
 ```
 Copy all `ZAP` files create by `ZILCH`
-to `out` directory and rename the following ones from the `ITS` 
+to  [out/](out/) directory and rename the following ones from the `ITS` 
 six characters to their full length:
 ```
 ># cd C:\storage\project\if\zilch.github\out
@@ -1721,7 +1721,7 @@ At your service!
 
 >
 ```
-Let's try the original `zork2freq.xzap`. Copy it to out,
+Let's try the original `zork2freq.xzap`. Copy it to [out/](out/),
 change the first line in zork2.zap to
 ```
         .INSERT "zork2freq"
