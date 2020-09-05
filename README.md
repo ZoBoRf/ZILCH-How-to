@@ -72,7 +72,7 @@ was running at:
 
 The second one shows a code snippet which illustrates the
 translation process from `ZIL` to `ZAP` accomplished by `ZILCH`,
-the `ZIL Compiler`. The slide comparses the `ZIL` `MATCH-FCN` routine
+the `ZIL Compiler`. The slide compares the `ZIL` `MATCH-FCN` routine
 in source and compiled form. This was the first time I saw a direct comparison
 between `ZIL` and `ZAP` code.
 
