@@ -60,7 +60,7 @@ internal Infocom development documents:
 | Changes to ZILCH                                       | zilch.new        |
 
 In addition
-*[Learning ZIL](https://github.com/ZoBoRf/LearningZIL) or Everything You Always Wanted to Know About Writing Interactive Fiction But Couldn't Find Anyone Still Working Here to Ask* could be found on the [Internet Archive](https://archive.org/details/Learning_ZIL_Steven_Eric_Meretzky_1995) for quite some time.
+*[Learning ZIL](https://github.com/ZoBoRf/LearningZIL) or Everything You Always Wanted to Know About Writing Interactive Fiction But Couldn't Find Anyone Still Working Here to Ask* by Steven Eric Meretzky could be found on the [Internet Archive](https://archive.org/details/Learning_ZIL_Steven_Eric_Meretzky_1995) for quite some time.
 
 At the *Game Developers Conference* 2014 Dave Lebling gave a talk with the title
 "[Classic Game Postmortem: Zork](https://www.gdcvault.com/play/1020612/Classic-Game-Postmortem)"
@@ -91,8 +91,9 @@ Based on this and other sources
 [Andrew Plotkin](https://twitter.com/zarfeblong) created the
 [The Obsessively Complete Infocom Catalog](https://eblong.com/infocom/).
 
-I was especially interested in the source code of `Zork II` packed in the
-[zork2-mac-r22.zip](https://eblong.com/infocom/sources/zork2-mac-r22.zip).
+I was especially interested in the source code of `Zork II` packed in 
+[zork2-mac-r22.zip](https://eblong.com/infocom/sources/zork2-mac-r22.zip) 
+because the archive contains the complete compiled `ZAP` files as well.
 
 [Jesse McGrew](https://www.facebook.com/public/Jesse-McGrew) created the
 open source ZIL Compiler [ZILF](https://foss.heptapod.net/zilf/zilf/) many
@@ -100,10 +101,12 @@ years ago, so we don't need `ZILCH` for creating new interactive fiction
 stories. Nevertheless my motivation is to bring back to life the really lost
 masterpieces of Infocom, first of all `ZILCH`.
 
-Ar Apr 30, 2019 [Lars Brinkhoff](https://twitter.com/larsbrinkhoff) made a
+Apr 30, 2019 [Lars Brinkhoff](https://twitter.com/larsbrinkhoff) made a
 single commit to the [https://github.com/PDP-10/zil](https://github.com/PDP-10/zil)
 GitHub repository.
-So I can safely say that April 2019 was one of the most exciting months of my life.
+Lars Brinkhoff is the researcher, wo helped identifying and extracting
+the original [Muddle Zork](https://github.com/MITDDC/zork) files from
+the [MIT Tapes of Tech Square (ToTS)](https://archivesspace.mit.edu/repositories/2/resources/1265) collection.
 
 Here are the contents of the [https://github.com/PDP-10/zil](https://github.com/PDP-10/zil) repository:
 ```
@@ -123,9 +126,7 @@ Here are the contents of the [https://github.com/PDP-10/zil](https://github.com/
 <ZORK.ZFTP>ZFTP.MUD.12    Jun  7  1980
 ```
 
-Lars Brinkhoff is the researcher, wo helped identifying and extracting
-the original [Muddle Zork](https://github.com/MITDDC/zork) files from
-the [MIT Tapes of Tech Square (ToTS)](https://archivesspace.mit.edu/repositories/2/resources/1265) collection.
+So I can safely say that April 2019 was one of the most exciting months of my life.
 
 Sep 01, 2020 I asked him on the IRC channel #pdp-10 on freenode
 
@@ -237,7 +238,7 @@ actions.cmp
 dungeon.cmp
 ```
 
-* `zork2.errors` is the transcript of the X`ZAP` assembler
+* `zork2.errors` is the transcript of the `X-ZAP` assembler
 
 ```
 Assembling ZORK2.XZAP.10
@@ -262,7 +263,7 @@ Inserting ZORK2STR.ZAP.1   (17699 bytes)
 244 objects.
 147 globals.
 ```
-`XZAP` assembles the `zork2.xzap` file (version 5).
+`XZAP` assembles the `zork2.xzap` file (version 10).
 The given size 83128 equals 64 bytes header plus the sum of 616, 17170, up to 17699 bytes.
 The filenames are in [`TOPS-20`](https://en.wikipedia.org/wiki/TOPS-20) naming convention (see CHAPTER 4, "FILE SPECIFICATIONS" of the [*TOPS-20 User's Guide*](https://github.com/ZoBoRf/MEM2TeX/blob/master/examples/users/USERS.MEM.pdf)).
 In my GitHub repository [`MEM2TeX`](https://github.com/ZoBoRf/MEM2TeX) are PDF versions of the [*TOPS-20 User's Guide*](https://github.com/ZoBoRf/MEM2TeX/blob/master/examples/users/USERS.MEM.pdf)
@@ -419,7 +420,7 @@ into `ZAP`.
 
 `ZIL` or the *Zork Implementation Language* is
 implemented by the `ZILCH` program written in `Muddle`.
-`ZIL` is documented  in [Learning ZIL (by Steven Eric Meretzky (SEM)](https://github.com/ZoBoRf/LearningZIL) and [A "ZIL Course" by Marc S. Blank (October 1982)](https://github.com/ZoBoRf/ZILCourse). Muddle is documented in ["The MDL Programming Language" by *S. W. Galley* and *Greg Pfister*](https://github.com/ZoBoRf/mdl-docs).
+`ZIL` is documented  in [Learning ZIL (by Steven Eric Meretzky)](https://github.com/ZoBoRf/LearningZIL) and [A "ZIL Course" by Marc S. Blank (October 1982)](https://github.com/ZoBoRf/ZILCourse). Muddle is documented in ["The MDL Programming Language" by *S. W. Galley* and *Greg Pfister*](https://github.com/ZoBoRf/mdl-docs).
 
 Here is how Marc Blank describes "The Z System" in his [*ZIL Course*](https://github.com/ZoBoRf/ZILCourse):
 > At the highest level is Z Implementation Language (ZIL),
@@ -433,8 +434,8 @@ Here is how Marc Blank describes "The Z System" in his [*ZIL Course*](https://gi
 > a *Z-machine emulator* (ZIP).
 
 `ZIL` defines on one side some structure building only forms, like
-`OBJECT`, `ROOM` and `SYNTAX' and on the other side the code creating
-form `ROUTINE`.
+`OBJECT`, `ROOM` and `SYNTAX` and on the other side the code creating
+form `ROUTINE` (look up the term `FORM` in ["The MDL Programming Language"](https://github.com/ZoBoRf/mdl-docs/blob/master/tex/mdl.pdf)).
 
 When we look at the following `ZIL` files,
 we will see only forms, which build data structures
@@ -503,7 +504,9 @@ The original `ZIP` specification describing all *Z machine instructions*
 is here: https://github.com/heasm66/YZIP-Specifications/blob/master/source/spec-yzip.pdf
 Henrik Åsman has a nice new PDF version here:
 https://github.com/heasm66/YZIP-Specifications/blob/master/yzip%20specifications.pdf .
-Davi Fillmore has a good compilation of the standards here http://www.frobnitz.co.uk/zmachine/ and here http://www.frobnitz.co.uk/zmachine/infocom/ .
+David Fillmore has a good compilation of the standards 
+here http://www.frobnitz.co.uk/zmachine/ and 
+here http://www.frobnitz.co.uk/zmachine/infocom/ .
 
 * `actions.cmp` and `dungeon.cmp`
 
@@ -545,19 +548,19 @@ zork2.zil  includes
 
 ### To run `ZILCH` `Muddle` is needed
 
-To run ZILCH we need a `Muddle` intepreter or a `Muddle` compiler.
-The problem is the is no running real Muddle on current platforms.
-A year ago I tried to run `ZILCH` on 
+To run `ZILCH` we need a `Muddle` intepreter or a `Muddle` compiler.
+The problem is there is no running real Muddle on current platforms 
+(Linux, Mac, Windows).
+A year ago I tried to run `ZILCH` on top of
 
 * [*`ZILF 0.8`*](https://foss.heptapod.net/zilf/zilf),
   the *Zork Implementation Language of the Future* with 
-  deactivated ZIL stuff to use the `Muddle` part only and also tried the
+  deactivated `ZIL` stuff to use the `Muddle` part only and also tried the
 * [*'Confusion', a MDL interpreter*](http://www.russotto.net/~mrussotto/confusion/) Matthew T. Russotto wrote to run the mainframe `Muddle` `Zork`.
   Quoting from Matthew's description:
-
->  For those poor souls still stuck in dawn of IF history, I present
->  "Confusion" -- a MDL interpreter which works just well enough to
->  play the original Zork all the way through.
+  >  For those poor souls still stuck in dawn of IF history, I present
+  >  "Confusion" -- a MDL interpreter which works just well enough to
+  >  play the original Zork all the way through.
 
 Unfortunately both interpreters have some incompatibilities so I got stuck.
 
@@ -601,7 +604,7 @@ LISTENING-AT-LEVEL 2 PROCESS 1
 ```
 
 On summer holiday A.D. 2020 I wanted
-to implement an own version of '<SORT ...', but the specification is 
+to implement an own version of `<SORT ...`, but the specification is 
 rather complicated (cf. section 7.6.3.2 SORT in ["The MDL Programming Language" by S. W. Galley and Greg Pfister](https://github.com/ZoBoRf/mdl-docs/blob/master/tex/mdl.pdf)) and while scanning the current `Muddle` GitHub 
 repositories at https://github.com/PDP-10/muddle for additional clues 
 I found this: https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/sortx.mud
