@@ -570,8 +570,11 @@ Unfortunately both interpreters have some incompatibilities so I got stuck.
 ### To run `Muddle` `ITS` on `PDP-10` is needed
 
 To check the (in)compatibilities of some constructs between the interpreters
-I used the original [mainframe Muddle](https://github.com/PDP-10/its/blob/master/doc/programs.md), which appeared on my radar in the 
-meantime. It runs on the famous [ITS](https://github.com/PDP-10/its) created 
+I used the original [mainframe Muddle](https://github.com/PDP-10/its/blob/master/doc/programs.md), which appeared on my radar in the meantime. 
+
+The ITS Muddle 56 is a reconstruction - we don't have complete ITS code or binaries for any version of Muddle, so [Adam T. Sampson](https://github.com/atsampson) and [Lars Brinkhoff](https://twitter.com/larsbrinkhoff) reconstructed it from the TOPS-20 version.
+
+It runs on the famous [ITS](https://github.com/PDP-10/its) created 
 and used by the 
 MIT [hackers](https://en.wikipedia.org/wiki/Hackers:_Heroes_of_the_Computer_Revolution) in the dawn of the computer era.
 
