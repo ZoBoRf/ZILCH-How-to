@@ -1598,6 +1598,18 @@ with two exceptions.
   This is probably why crufty was compiled in a different way 
   resulting in an `XZAP` file.
 
+* Second: `zork2dat.zap`:
+  Three missing lines at end of `zork2dat.zap`:
+  ```
+          .ENDT
+  
+  ; END LOAD                           \ 
+  ENDLOD::                              > missing lines
+  ; PURE TABLES ARE DEFINED HERE       /
+  
+  	.ENDI
+  ```
+
 ### Compiling with `ZILF`
 
 Let's try to build it with `ZILF`.
