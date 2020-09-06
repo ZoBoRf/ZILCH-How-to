@@ -6,8 +6,8 @@
 
 <DEFINE FILFIL (OUTCHAN)
 	#DECL ((OUTCHAN) <SPECIAL CHANNEL>)
-	<PRINC ";\"==================================================\"">
-	<CRLF>
+	;<PRINC ";\"==================================================\"">
+	;<CRLF>
 	<PRINC <ISTRING 1000>>>
 
 <DEFINE AGC-HANDLER (SIZE WHAT)

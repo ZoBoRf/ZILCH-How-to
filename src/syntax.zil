@@ -576,4 +576,4 @@
 
 ;"<SYNTAX WHERE ...> WHERE is a synonym of FIND"
 
-;<SYNTAX $VERIFY = V-$VERIFY>
+<SYNTAX $VERIFY = V-$VERIFY>

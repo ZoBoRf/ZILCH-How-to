@@ -1637,7 +1637,7 @@ collapse." CR>)>>
 		"bulging chest" "yellow sphere" "silver sword" "grue"
 		"convention of wizards" "copy of ZORK I">>
 
-;<ROUTINE V-$VERIFY ()
+<ROUTINE V-$VERIFY ()
 	 <TELL "Verifying game..." CR>
 	 <COND (<VERIFY> <TELL "Game correct." CR>)
 	       (T <TELL CR "** Game File Failure **" CR>)>>

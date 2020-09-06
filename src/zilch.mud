@@ -1731,6 +1731,7 @@ ZILCH finished in "
        <ADD-OP RESTORE 0 0 T <>>
        <ADD-OP RESTART 0 0 <> <>>
        <ADD-OP QUIT 0 0 <> <>>
+       <ADD-OP VERIFY 0 0 T <>>
        <ADD-OP RSTACK 0 0 <> <>>
        <ADD-OP FSTACK 0 0 <> <>>
        <ADD-OP PUT 3 3 <> <>>

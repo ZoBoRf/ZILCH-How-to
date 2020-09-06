@@ -1134,6 +1134,17 @@ kdiff3 origfiles\mimlib\trace.mud src\trace.mud
 kdiff3 origfiles\zork2-mac-r22.zil\zork2.zil src\zork2.zi
 ```
 
+In `ZILCH` I added the missing `VERIFY` opcode:
+```
+...
+       <ADD-OP RESTART 0 0 <> <>>
+       <ADD-OP QUIT 0 0 <> <>>
+       <ADD-OP VERIFY 0 0 T <>>
+       <ADD-OP RSTACK 0 0 <> <>>
+       <ADD-OP FSTACK 0 0 <> <>>
+...
+```
+
 ## Transferring All Files to `ITS`
 
 Create a new directory `Z2`
@@ -1410,7 +1421,7 @@ LISTENING-AT-LEVEL 1 PROCESS 1
 g <-- here i typed g 
       to suppress the display of
       --More--
-      after a screenful of output
+      after each screenful of output
 ZIL Debugging Compiler 4.5
 --------------------------
 Input file: ZORK2.ZIL
@@ -1587,19 +1598,6 @@ with two exceptions.
   This is probably why crufty was compiled in a different way 
   resulting in an `XZAP` file.
 
-* The second exception is the missing `<VERIFY>` opcode and the differences
-  as the result of commenting out the last line in `syntax.zil`
-   ```
-   ;<SYNTAX $VERIFY = V-$VERIFY>
-   ```
-   and the last routine in `verbs.zil`
-   ```
-   ;<ROUTINE V-$VERIFY ()
-         <TELL "Verifying game..." CR>
-         <COND (<VERIFY> <TELL "Game correct." CR>)
-               (T <TELL CR "** Game File Failure **" CR>)>>
-   ```
-
 ### Compiling with `ZILF`
 
 Let's try to build it with `ZILF`.
@@ -1722,6 +1720,10 @@ A strangely familiar brass lantern is lying on the ground.
 >zork
 At your service!
 
+>$VERIFY
+Verifying game...
+Game correct.
+
 >
 ```
 Let's try the original `zork2freq.xzap`. Copy it to [out/](out/),
@@ -1784,7 +1786,6 @@ Looking into
 
 ## ToDo
 
-* no `<VERIFY>`, implement it
 * document `macros.mud`
 * use Debian only (because of problems with Ubuntu)
 * test current Debian distibution

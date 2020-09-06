@@ -2106,4 +2106,13 @@ Release "
 	SET	'SPELL-VICTIM,0
 	RTRUE	
 
+
+	.FUNCT	V-$VERIFY
+	PRINTI	"Verifying game..."
+	CRLF	
+	VERIFY	 \?ELS7
+	PRINTR	"Game correct."
+?ELS7:	CRLF	
+	PRINTR	"** Game File Failure **"
+
 	.ENDI
