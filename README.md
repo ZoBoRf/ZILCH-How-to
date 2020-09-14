@@ -162,7 +162,7 @@ logic in a natural language,
 such as English, interspersed with snippets of macros and
 traditional source code, from which compilable source
 code can be generated. Knuth used literate programming to write
-and document his famous typsetting program TeX still in wide use today.
+and document his famous typesetting program TeX still in wide use today.
 I'm going to do that with [Nuweb](https://github.com/ZoBoRf/nuweb)
 which I made some small changes to.
 
@@ -615,8 +615,9 @@ rather complicated (cf. section 7.6.3.2 SORT in ["The MDL Programming Language" 
 repositories at https://github.com/PDP-10/muddle for additional clues 
 I found this: https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/sortx.mud
 The current `ITS Muddle 56` does not understand the `<PACKAGE ...` concept,
-so I deleted the corresponding lines and renamed the subroutine
-to `<SORTEX ...` and changed the corresponding lines in `ZILCH.MUD`.
+so I deleted the corresponding lines and renamed the subroutine `<SORT ...`
+to `<SORTEX ...` and changed the calls to `<SORT ...` in `ZILCH.MUD` 
+accordingly.
 It didn't work at first, so I took the opportunity to use one debugging
 tool described in [The MDL Programming Environment by P. David Lebling](https://github.com/PDP-10/muddle/blob/master/doc/MDL_Programming_Environment.pdf):
 Section 3.6. "Execution Tracing".
@@ -717,11 +718,11 @@ rob@ubuntu:~/itsnew$ ./start
 The [*Incompatible Timsharing System* (`ITS`)](https://en.wikipedia.org/wiki/Incompatible_Timesharing_System) is idiosyncratic and it
 takes time to getting used to it.
 
-If you stuble over it in the docs: 
-Pressing the `ALTMODE` key, means pressing the `ESC` key, 
+If you stumble over it in the docs: 
+Pressing the `ALTMODE` key, means pressing the `ESC` key.
 This will be echoed as a `$` character.
 
-Let's start `ITS`, login and create an user folder.
+Let's start `ITS`, login and create a user folder.
 ```
 KLH10 2.0l (MyITS) built Aug 29 2020 11:40:02
     Copyright (c) 2002 Kenneth L. Harrenstien -- All Rights Reserved.
@@ -806,7 +807,7 @@ which will be executed at next login.
 ```
 :tctyp aaa page=25 width=79 scroll
 :emacs rob login
-tctyp aaa page=25 width=79 scroll
+:tctyp aaa page=25 width=79 scroll
 ^X^S
 ^X^C
 ^F
@@ -928,7 +929,7 @@ Now is a good time to read some user documentation:
 #### Buffer Flush Problem
 
 I have noticed that muddle does not write short files to disk.
-Lets first try an internal channel (cf. section 11.9 Internal CHANNELs ["The MDL Programming Language](https://github.com/ZoBoRf/mdl-docs/blob/master/tex/mdl.pdf)) (virtual file) to see on screen
+Let's first try an internal channel (cf. section 11.9 Internal CHANNELs ["The MDL Programming Language](https://github.com/ZoBoRf/mdl-docs/blob/master/tex/mdl.pdf)) (virtual file) to see on screen
 what should happen on open, write and close of a file.
 ```
 *:muddle
@@ -1081,11 +1082,11 @@ the output channel of the compiler transcript on screen.
         ;<CRLF>
         <PRINC <ISTRING 1000>>>
 ```
-The trailing null bytes aren't a problem, they are ignored on FTP ascii
-download and are also ignored by `emacs` on `ITS`.
+The trailing null bytes aren't a problem, they are ignored on FTP ASCII
+download and are also ignored by `Emacs` on `ITS`.
 
 I tried the `FILTST` on `mdl106.exe` on `TOPS-20` with the Panda (http://panda.trailing-edge.com/, https://github.com/PDP-10/panda)
-distibution to. There the bug does not exist.
+distribution to. There the bug does not exist.
 
 #### GC Problem
 
@@ -1490,7 +1491,7 @@ ZILCH finished in 332.90143 seconds."DONE"
 <QUIT>$
 ```
 
-Somtimes, using this direct method, I get a
+Sometimes, using this direct method, I get a
 **M**emory **P**rotection **V**iolation:
 ```
  ** Warning, Undefined Routine: T
@@ -1800,7 +1801,7 @@ Looking into
 
 * document `macros.mud`
 * use Debian only (because of problems with Ubuntu)
-* test current Debian distibution
+* test current Debian distribution
 * look for the reason for the `zapf` warning: 
   ZORK2DAT.zap:945: warning: incorrect table size: expected 2357, actual 2258
 
