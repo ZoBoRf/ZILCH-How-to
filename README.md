@@ -1201,7 +1201,7 @@ FREE BLOCKS #0=13955
 
 ## Running ZILCH
 
-Kill all running backgroud jobs first with `:massacre`
+Kill all running background jobs first with `:massacre`
 ```
 *:massac
 ```
@@ -1422,7 +1422,7 @@ LISTENING-AT-LEVEL 1 PROCESS 1
 g <-- here i typed g 
       to suppress the display of
       --More--
-      after each screenful of output
+      after each screen of output
 ZIL Debugging Compiler 4.5
 --------------------------
 Input file: ZORK2.ZIL
