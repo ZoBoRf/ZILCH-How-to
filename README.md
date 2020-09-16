@@ -91,8 +91,8 @@ Based on this and other sources
 [Andrew Plotkin](https://twitter.com/zarfeblong) created the
 [The Obsessively Complete Infocom Catalog](https://eblong.com/infocom/).
 
-I was especially interested in the source code of `Zork II` packed in 
-[zork2-mac-r22.zip](https://eblong.com/infocom/sources/zork2-mac-r22.zip) 
+I was especially interested in the source code of `Zork II` packed in
+[zork2-mac-r22.zip](https://eblong.com/infocom/sources/zork2-mac-r22.zip)
 because the archive contains the complete compiled `ZAP` files as well.
 
 [Jesse McGrew](https://www.facebook.com/public/Jesse-McGrew) created the
@@ -131,7 +131,7 @@ So I can safely say that April 2019 was one of the most exciting months of my li
 Sep 01, 2020 I asked him on the IRC channel #pdp-10 on freenode
 
 > ```
-> <ZoBoRf> larsb: Where did the files in 
+> <ZoBoRf> larsb: Where did the files in
 >          https://github.com/PDP-10/zil originally come from?
 > <larsb> I think from the Infocom drive.
 > <larsb> No, that's not right.
@@ -507,8 +507,8 @@ is here: https://github.com/heasm66/YZIP-Specifications/blob/master/source/spec-
 Henrik Åsman has a nice new PDF version here:
 https://github.com/heasm66/YZIP-Specifications/blob/master/yzip%20specifications.pdf.
 
-David Fillmore has a good compilation of the standards 
-here http://www.frobnitz.co.uk/zmachine/ and 
+David Fillmore has a good compilation of the standards
+here http://www.frobnitz.co.uk/zmachine/ and
 here http://www.frobnitz.co.uk/zmachine/infocom/.
 
 * `actions.cmp` and `dungeon.cmp`
@@ -536,7 +536,7 @@ Now we know which files we need feed `ZILCH` with:
 
 ```
 zork2.zil  includes
- |  
+ |
  +- dungeon.zil
  +- syntax.zil
  +- macros.zil
@@ -552,12 +552,12 @@ zork2.zil  includes
 ### To run `ZILCH` `Muddle` is needed
 
 To run `ZILCH` we need a `Muddle` interpreter or a `Muddle` compiler.
-Unfortunately there is no running real Muddle on *current* platforms 
+Unfortunately there is no running real Muddle on *current* platforms
 (Linux, Mac, Windows).
 A year ago I tried to run `ZILCH` on top of
 
 * [*`ZILF 0.8`*](https://foss.heptapod.net/zilf/zilf),
-  the *Zork Implementation Language of the Future* with 
+  the *Zork Implementation Language of the Future* with
   deactivated `ZIL` stuff to use the `Muddle` part only and also tried the
 * [*'Confusion', a MDL interpreter*](http://www.russotto.net/~mrussotto/confusion/) Matthew T. Russotto wrote to run the mainframe `Muddle` `Zork`.
   Quoting from Matthew's description:
@@ -570,20 +570,20 @@ Unfortunately both interpreters have some incompatibilities so I got stuck.
 ### To run `Muddle` `ITS` on `PDP-10` is needed
 
 To check the (in)compatibilities of some constructs between the interpreters
-I used the original [mainframe Muddle](https://github.com/PDP-10/its/blob/master/doc/programs.md), which appeared on my radar in the meantime. 
+I used the original [mainframe Muddle](https://github.com/PDP-10/its/blob/master/doc/programs.md), which appeared on my radar in the meantime.
 
 The ITS Muddle 56 is a reconstruction - we don't have complete ITS code or binaries for any version of Muddle, so [Adam T. Sampson](https://github.com/atsampson) and [Lars Brinkhoff](https://twitter.com/larsbrinkhoff) reconstructed it from the TOPS-20 version.
 
-It runs on the famous [ITS](https://github.com/PDP-10/its) created 
-and used by the 
+It runs on the famous [ITS](https://github.com/PDP-10/its) created
+and used by the
 MIT [hackers](https://en.wikipedia.org/wiki/Hackers:_Heroes_of_the_Computer_Revolution) in the dawn of the computer era.
 
 The `ITS` operating system was brought back to light from the lost
-treasures of DEC tapes by a group of enthusiasts around 
+treasures of DEC tapes by a group of enthusiasts around
 [Lars Brinkhoff](https://twitter.com/larsbrinkhoff)
 which documents their efforts here: https://github.com/PDP-10
 
-The problem was this Muddle has no working `<SORT ...` and `ZILCH` uses it at 
+The problem was this Muddle has no working `<SORT ...` and `ZILCH` uses it at
 four places:
 
 ```
@@ -594,8 +594,8 @@ four places:
 1286:   <MAPF <> ,LIST-ATOM <SORT <> .UVEC>>>
 ```
 
-The `ITS` `Muddle` wants to load an external `SORTX` "overlay", 
-which simply is not preserved. 
+The `ITS` `Muddle` wants to load an external `SORTX` "overlay",
+which simply is not preserved.
 ```
 :muddle
 MUDDLE 56 IN OPERATION.
@@ -610,21 +610,21 @@ LISTENING-AT-LEVEL 2 PROCESS 1
 ```
 
 On summer holiday A.D. 2020 I wanted
-to implement an own version of `<SORT ...`, but the specification is 
-rather complicated (cf. section 7.6.3.2 SORT in ["The MDL Programming Language" by S. W. Galley and Greg Pfister](https://github.com/ZoBoRf/mdl-docs/blob/master/tex/mdl.pdf)) and while scanning the current `Muddle` GitHub 
-repositories at https://github.com/PDP-10/muddle for additional clues 
+to implement an own version of `<SORT ...`, but the specification is
+rather complicated (cf. section 7.6.3.2 SORT in ["The MDL Programming Language" by S. W. Galley and Greg Pfister](https://github.com/ZoBoRf/mdl-docs/blob/master/tex/mdl.pdf)) and while scanning the current `Muddle` GitHub
+repositories at https://github.com/PDP-10/muddle for additional clues
 I found this: https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/sortx.mud
 The current `ITS Muddle 56` does not understand the `<PACKAGE ...` concept,
 so I deleted the corresponding lines and renamed the subroutine `<SORT ...`
-to `<SORTEX ...` and changed the calls to `<SORT ...` in `ZILCH.MUD` 
+to `<SORTEX ...` and changed the calls to `<SORT ...` in `ZILCH.MUD`
 accordingly.
 It didn't work at first, so I took the opportunity to use one debugging
 tool described in [The MDL Programming Environment by P. David Lebling](https://github.com/PDP-10/muddle/blob/master/doc/MDL_Programming_Environment.pdf):
 Section 3.6. "Execution Tracing".
 After I found the implementation for `<TRACE ...`
-in 
-[`trace.mud`](https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/trace.mud), 
-[`nstruc.mud`](https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/newstruc.mud) and 
+in
+[`trace.mud`](https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/trace.mud),
+[`nstruc.mud`](https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/newstruc.mud) and
 [`pprint.mud`](https://github.com/PDP-10/muddle/blob/master/MUDDLE/pprint.1) from an older `ITS` `Muddle` implementation,
 first I `FLOADed` the files in the file `z2.mud` (the bootstrap file which calls `ZILCH`):
 ```
@@ -648,15 +648,15 @@ and could so fix some problems in the stolen `<SORTEX ...`.
 ![SORT fixes](images/SORT-fixes.png)
 
 Farther I had major problems with a failing garbage collector.
-Fortunately the problems almost completely disappeared 
-thanks to the [efforts](https://github.com/PDP-10/its/pull/1928) 
+Fortunately the problems almost completely disappeared
+thanks to the [efforts](https://github.com/PDP-10/its/pull/1928)
 of [Adam T. Sampson](https://github.com/atsampson),
 so I could remove my GC workarounds.
 
 ## Preparing Virtual Linux Host(s)
 
 `ITS` runs on different `PDP-10` emulators.
-I chose the `klh10` because it has a more or less 
+I chose the `klh10` because it has a more or less
 stable `FTP` access into `ITS`.
 The `FTP` transfers are not very stable. Sometimes
 I had to try several times to `PUT` or `GET` a file.
@@ -718,7 +718,7 @@ rob@ubuntu:~/itsnew$ ./start
 The [*Incompatible Timsharing System* (`ITS`)](https://en.wikipedia.org/wiki/Incompatible_Timesharing_System) is idiosyncratic and it
 takes time to getting used to it.
 
-If you stumble over it in the docs: 
+If you stumble over it in the docs:
 Pressing the `ALTMODE` key, means pressing the `ESC` key.
 This will be echoed as a `$` character.
 
@@ -738,10 +738,10 @@ Emulated config:
 	 Other: CIRC JPC DEBUG PCCACHE CTYINT IMPINT EVHINT
 	 Devices: RH11 RPXX(DP) TM03 DZ11 CH11 LHDH(DPIMP)
 ...
-KLH10# 
+KLH10#
 KLH10# ; Define IMP for PI on ITS.JOSS.COM
 KLH10# devdef imp  ub3   lhdh   addr=767600 br=6 vec=250 ipaddr=192.168.1.100 gwaddr=192.168.0.45
-KLH10# 
+KLH10#
 ...
 KLH10# [EOF on dskdmp.ini]
 ```
@@ -811,8 +811,8 @@ which will be executed at next login.
 ^X^S
 ^X^C
 ^F
-DB   ROB   
-FREE BLOCKS #0=13701 
+DB   ROB
+FREE BLOCKS #0=13701
   0   ROB    LOGIN  1 ! 8/29/2020 14:15:26
 *
 ```
@@ -842,7 +842,7 @@ rob$u
 Now shut down `ITS`:
 ```
 *:lock
- LOCK.156  
+ LOCK.156
 _5down
 DO YOU REALLY WANT THE SYSTEM TO GO DOWN?
 y
@@ -855,7 +855,7 @@ CULPRIT =  ROB    LOCK   19:32:54
 _
 DB ITS going down in 5:00
 q
-:KILL 
+:KILL
 DB ITS going down in 4:55
 *$$u
 DB ITS 1650 NOT IN OPERATION AT 19:33:11
@@ -864,10 +864,10 @@ PFTHMG DRAGON CHANNA LOGOUT TIMES  DELRNM 19:33:11
 ```
 And wait for
 ```
-SHUTDOWN COMPLETE  
+SHUTDOWN COMPLETE
 PI LEVEL 7 BUGDDT.  TYPE <ALTMODE>P TO CONTINUE.
 YOU ARE NOW IN DDT.
-BUGPC/   CAIA COFFI4+1   $Q-2/   JRST COFFI7   
+BUGPC/   CAIA COFFI4+1   $Q-2/   JRST COFFI7
 ```
 Now type `CTRL-\` to get the emulator console.
 ```
@@ -875,12 +875,12 @@ BUGPC/   CAIA COFFI4+1   $Q-2/   JRST COFFI7   [HALTED: FE interrupt]
 KLH10> quit
 Are you sure you want to quit? [Confirm]y<ENTER>
 Shutting down...Bye!
-rob@ubuntu:~/itsnew$ 
+rob@ubuntu:~/itsnew$
 ```
 
 OK, now we can start and stop `ITS` so
 we are ready to create a new directory,
-FTP all the needed `ZILCH` and the `Zork II` files into it 
+FTP all the needed `ZILCH` and the `Zork II` files into it
 and bring `ZILCH` into life again after all this years.
 
 ### Learning the ITS Basics
@@ -899,30 +899,30 @@ Now is a good time to read some user documentation:
 
 ### Included Files
 
-| src file                       | taken from | 
+| src file                       | taken from |
 | ------------------------------ | ---------- |
-| [`z.mud`](src/z.mud)           | to create save file `DSK:Z2; Z SAVE` | 
-| [`z2.mud`](src/z2.mud)         | to call `<ZILCH ...` directly | 
+| [`z.mud`](src/z.mud)           | to create save file `DSK:Z2; Z SAVE` |
+| [`z2.mud`](src/z2.mud)         | to call `<ZILCH ...` directly |
 |                                |            |
-| [`zilch.mud`](src/zilch.mud)   | https://github.com/PDP-10/zil/blob/master/zork.z/zilch.mud.188 | 
-|                                | https://github.com/PDP-10/zil/blob/master/zork.z/zstr.mud.2 | 
-| [`macros.mud`](src/macros.mud) | [`macros.zil`](src/macros.zil) | 
-| [`sort.mud`](src/sort.mud)     | https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/sortx.mud | 
-| [`trace.mud`](src/trace.mud)   | https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/trace.mud | 
-| [`nstruc.mud`](src/nstruc.mud) | https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/newstruc.mud | 
-| [`pprint.mud`](src/pprint.mud) | https://github.com/PDP-10/muddle/blob/master/MUDDLE/pprint.1 | 
+| [`zilch.mud`](src/zilch.mud)   | https://github.com/PDP-10/zil/blob/master/zork.z/zilch.mud.188 |
+|                                | https://github.com/PDP-10/zil/blob/master/zork.z/zstr.mud.2 |
+| [`macros.mud`](src/macros.mud) | [`macros.zil`](src/macros.zil) |
+| [`sort.mud`](src/sort.mud)     | https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/sortx.mud |
+| [`trace.mud`](src/trace.mud)   | https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/trace.mud |
+| [`nstruc.mud`](src/nstruc.mud) | https://github.com/PDP-10/muddle/blob/master/mim/development/mim/vax/mimlib/newstruc.mud |
+| [`pprint.mud`](src/pprint.mud) | https://github.com/PDP-10/muddle/blob/master/MUDDLE/pprint.1 |
 |                                |            |
-| [`zork2.zil`](src/zork2.zil)   | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
-| [`dungeo.zil`](src/dungeo.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
-| [`syntax.zil`](src/syntax.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
-| [`macros.zil`](src/macros.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
-| [`clock.zil`](src/clock.zil)   | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
-| [`main.zil`](src/main.zil)     | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
-| [`parser.zil`](src/parser.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
-| [`demons.zil`](src/demons.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
-| [`crufty.zil`](src/crufty.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
-| [`verbs.zil`](src/verbs.zil)   | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
-| [`action.zil`](src/action.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip | 
+| [`zork2.zil`](src/zork2.zil)   | https://eblong.com/infocom/sources/zork2-mac-r22.zip |
+| [`dungeo.zil`](src/dungeo.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip |
+| [`syntax.zil`](src/syntax.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip |
+| [`macros.zil`](src/macros.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip |
+| [`clock.zil`](src/clock.zil)   | https://eblong.com/infocom/sources/zork2-mac-r22.zip |
+| [`main.zil`](src/main.zil)     | https://eblong.com/infocom/sources/zork2-mac-r22.zip |
+| [`parser.zil`](src/parser.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip |
+| [`demons.zil`](src/demons.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip |
+| [`crufty.zil`](src/crufty.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip |
+| [`verbs.zil`](src/verbs.zil)   | https://eblong.com/infocom/sources/zork2-mac-r22.zip |
+| [`action.zil`](src/action.zil) | https://eblong.com/infocom/sources/zork2-mac-r22.zip |
 
 ### Problems
 
@@ -940,12 +940,12 @@ LISTENING-AT-LEVEL 1 PROCESS 1
         <PRINC .C>>$
 FCN
 <SET CHAN <OPEN "PRINT" "INT:" ,FCN>>$
-#CHANNEL [0 "PRINT" "INPUT" ">" "INT" "ROB" "INPUT" ">" "INT" "ROB" -1 
+#CHANNEL [0 "PRINT" "INPUT" ">" "INT" "ROB" "INPUT" ">" "INT" "ROB" -1
 23748404326 0 0 0 0 0 10 #FUNCTION ((C) #DECL ((C) CHARACTER) <PRINC .C>)]
 <PRINC "Hello!" .CHAN>$
 Hello!"Hello!"
 <CLOSE .CHAN>$
-#CHANNEL [0 "PRINT" "INPUT" ">" "INT" "ROB" "INPUT" ">" "INT" "ROB" -1 
+#CHANNEL [0 "PRINT" "INPUT" ">" "INT" "ROB" "INPUT" ">" "INT" "ROB" -1
 23085704385 0 6 0 0 6 10 #FUNCTION ((C) #DECL ((C) CHARACTER) <PRINC .C>)]
 <QUIT>$
 ```
@@ -986,7 +986,7 @@ FLOAD "FILTST">$
 "DONE"
 <QUIT>$
 
-:KILL 
+:KILL
 *:print foo bar
 
 *
@@ -1090,7 +1090,7 @@ distribution to. There the bug does not exist.
 
 #### GC Problem
 
-Here are some workarounds I tried on problems with the 
+Here are some workarounds I tried on problems with the
 automatic garbage collector (AGC):
 
 * tweak the `<BLOAT ...` line in `zork2 zil`
@@ -1109,18 +1109,18 @@ automatic garbage collector (AGC):
 
   Section 21.8.5 "DIVERT-AGC" of ["The MDL Programming Language](https://github.com/ZoBoRf/mdl-docs/blob/master/tex/mdl.pdf) states:
 
-  > "DIVERT-AGC" ("Automatic Garbage Collection") occurs just **before** a 
+  > "DIVERT-AGC" ("Automatic Garbage Collection") occurs just **before** a
   > deferrable garbage collection that is needed because of exhausted movable
   > garbage-collected storage. Enabling this interrupt is the only way
-  > a program can know that a garbage collection is about to occur. 
-  > A handler takes two arguments: `A FIX` telling the number of machine 
+  > a program can know that a garbage collection is about to occur.
+  > A handler takes two arguments: `A FIX` telling the number of machine
   > words needed and an `ATOM` telling what initiated the garbage collection
-  > [...]. 
+  > [...].
   > **If it wishes, a handler can try to prevent a garbage collection by calling
-  > `BLOAT` with the `FIX` argument.** 
-  > If the pending request for garbage-collected storage cannot then be 
-  > satisfied, a garbage collection occurs anyway. 
-  > `AGC-FLAG` is `SET` to `T` while the handler is running, so that new 
+  > `BLOAT` with the `FIX` argument.**
+  > If the pending request for garbage-collected storage cannot then be
+  > satisfied, a garbage collection occurs anyway.
+  > `AGC-FLAG` is `SET` to `T` while the handler is running, so that new
   > storage requests do not try to cause a garbage collection.
 
 ### Changes Made
@@ -1151,8 +1151,8 @@ In `ZILCH` I added the missing `VERIFY` opcode:
 Create a new directory `Z2`
 ```
 *^F
-DB   ROB   
-FREE BLOCKS #0=13955 
+DB   ROB
+FREE BLOCKS #0=13955
   0   ROB    LOGIN  1 ! 8/29/2020 14:15:26
 *:print z2;..new. (udir)
 DSK: Z2; ..NEW. (UDIR) - FILE NOT FOUND
@@ -1166,16 +1166,32 @@ Connected to 192.168.1.100.
 220 Bugs/gripes to BUG-FTP @ MIT-MC
 Name (192.168.1.100:rob): z2
 230 OK, your user name is Z2
-ftp> put action.zil "ACTION ZIL"
-...
-ftp> put zork2.zil "ZORK2 ZIL"
+ftp> put "action.zil" "ACTION ZIL"
+ftp> put "clock.zil"  "CLOCK ZIL"
+ftp> put "crufty.zil" "CRUFTY ZIL"
+ftp> put "demons.zil" "DEMONS ZIL"
+ftp> put "dungeo.zil" "DUNGEO ZIL"
+ftp> put "macros.mud" "MACROS MUD"
+ftp> put "macros.zil" "MACROS ZIL"
+ftp> put "main.zil"   "MAIN ZIL"
+ftp> put "nstruc.mud" "NSTRUC MUD"
+ftp> put "parser.zil" "PARSER ZIL"
+ftp> put "pprint.mud" "PPRINT MUD"
+ftp> put "sort.mud"   "SORT MUD"
+ftp> put "syntax.zil" "SYNTAX ZIL"
+ftp> put "trace.mud"  "TRACE MUD"
+ftp> put "verbs.zil"  "VERBS ZIL"
+ftp> put "z2.mud"     "Z2 MUD"
+ftp> put "z.mud"      "Z MUD"
+ftp> put "zork2.zil"  "ZORK2 ZIL"
+ftp> put "zilch.mud"  "ZILCH MUD"
 ftp> quit
 ```
 
 ```
 ^F
-DB   Z2    
-FREE BLOCKS #0=13955 
+DB   Z2
+FREE BLOCKS #0=13955
 *
 *^F
   0   ACTION ZIL    25 ! 8/29/2020 14:16:29
@@ -1267,8 +1283,8 @@ LISTENING-AT-LEVEL 1 PROCESS 1
 "DONE"
 <QUIT>$
 *^F
-DB   Z2    
-FREE BLOCKS #0=13697 
+DB   Z2
+FREE BLOCKS #0=13697
 ...
   0   Z      SAVE   61 ! 8/30/2020 19:57:32
 ...
@@ -1419,9 +1435,8 @@ and then we FLOAD it:
 MUDDLE 56 IN OPERATION.
 LISTENING-AT-LEVEL 1 PROCESS 1
 <FLOAD "Z2">$
-g <-- here i typed g 
+g <-- here i typed g
       to suppress the display of
-      --More--
       after each screen of output
 ZIL Debugging Compiler 4.5
 --------------------------
@@ -1495,7 +1510,7 @@ Sometimes, using this direct method, I get a
 **M**emory **P**rotection **V**iolation:
 ```
  ** Warning, Undefined Routine: T
-MPV; 723564>>HLRZ 13,-1(1)   13/   -1,,400003   532204/   ??    
+MPV; 723564>>HLRZ 13,-1(1)   13/   -1,,400003   532204/   ??
 ```
 
 Then I try one of this two workarounds:
@@ -1531,8 +1546,8 @@ Then I try one of this two workarounds:
 
 ## Reviewing Output
 
-At first glance we can see in the `ZILCH` output, that the counting 
-of bytes used by the compiled routine code is broken. 
+At first glance we can see in the `ZILCH` output, that the counting
+of bytes used by the compiled routine code is broken.
 However, this has no effect on the compiled code.
 
 Now we can get all the `ZAP` files down from `ITS` and compare them
@@ -1554,38 +1569,38 @@ ftp> mget *
 and rename the files afterwards or
 
 ```
-ftp> get "ACTION ZAP"   "action.zap" 
-ftp> get "ACTION ZIL"   "action.zil" 
-ftp> get "CLOCK ZAP"    "clock.zap" 
-ftp> get "CLOCK ZIL"    "clock.zil" 
-ftp> get "CRUFTY ZAP"   "crufty.zap" 
-ftp> get "CRUFTY ZIL"   "crufty.zil" 
-ftp> get "DEMONS ZAP"   "demons.zap" 
-ftp> get "DEMONS ZIL"   "demons.zil" 
-ftp> get "DUNGEO ZAP"   "dungeo.zap" 
-ftp> get "DUNGEO ZIL"   "dungeo.zil" 
-ftp> get "MACROS MUD"   "macros.mud" 
-ftp> get "MACROS ZAP"   "macros.zap" 
-ftp> get "MACROS ZIL"   "macros.zil" 
-ftp> get "MAIN ZAP"     "main.zap" 
-ftp> get "MAIN ZIL"     "main.zil" 
-ftp> get "NSTRUC MUD"   "nstruc.mud" 
-ftp> get "PARSER ZAP"   "parser.zap" 
-ftp> get "PARSER ZIL"   "parser.zil" 
-ftp> get "PPRINT MUD"   "pprint.mud" 
-ftp> get "SORT MUD"     "sort.mud" 
-ftp> get "SYNTAX ZAP"   "syntax.zap" 
-ftp> get "SYNTAX ZIL"   "syntax.zil" 
-ftp> get "TRACE MUD"    "trace.mud" 
-ftp> get "VERBS ZAP"    "verbs.zap" 
-ftp> get "VERBS ZIL"    "verbs.zil" 
-ftp> get "Z2 MUD"       "z2.mud" 
-ftp> get "Z MUD"        "z.mud" 
-ftp> get "ZORK2D ZAP"   "zork2d.zap" 
-ftp> get "ZORK2S ZAP"   "zork2s.zap" 
-ftp> get "ZORK2 ZIL"    "zork2.zil" 
-ftp> get "ZILCH MUD"    "zilch.mud" 
-ftp> get "ZORK2 ZAP"    "zork2.zap"    
+ftp> get "ACTION ZAP"   "action.zap"
+ftp> get "ACTION ZIL"   "action.zil"
+ftp> get "CLOCK ZAP"    "clock.zap"
+ftp> get "CLOCK ZIL"    "clock.zil"
+ftp> get "CRUFTY ZAP"   "crufty.zap"
+ftp> get "CRUFTY ZIL"   "crufty.zil"
+ftp> get "DEMONS ZAP"   "demons.zap"
+ftp> get "DEMONS ZIL"   "demons.zil"
+ftp> get "DUNGEO ZAP"   "dungeo.zap"
+ftp> get "DUNGEO ZIL"   "dungeo.zil"
+ftp> get "MACROS MUD"   "macros.mud"
+ftp> get "MACROS ZAP"   "macros.zap"
+ftp> get "MACROS ZIL"   "macros.zil"
+ftp> get "MAIN ZAP"     "main.zap"
+ftp> get "MAIN ZIL"     "main.zil"
+ftp> get "NSTRUC MUD"   "nstruc.mud"
+ftp> get "PARSER ZAP"   "parser.zap"
+ftp> get "PARSER ZIL"   "parser.zil"
+ftp> get "PPRINT MUD"   "pprint.mud"
+ftp> get "SORT MUD"     "sort.mud"
+ftp> get "SYNTAX ZAP"   "syntax.zap"
+ftp> get "SYNTAX ZIL"   "syntax.zil"
+ftp> get "TRACE MUD"    "trace.mud"
+ftp> get "VERBS ZAP"    "verbs.zap"
+ftp> get "VERBS ZIL"    "verbs.zil"
+ftp> get "Z2 MUD"       "z2.mud"
+ftp> get "Z MUD"        "z.mud"
+ftp> get "ZORK2D ZAP"   "zork2d.zap"
+ftp> get "ZORK2S ZAP"   "zork2s.zap"
+ftp> get "ZORK2 ZIL"    "zork2.zil"
+ftp> get "ZILCH MUD"    "zilch.mud"
+ftp> get "ZORK2 ZAP"    "zork2.zap"
 ftp> quit
 ```
 
@@ -1596,18 +1611,18 @@ with two exceptions.
 * First: `crufty.zap`:
   ![crufty diffs](images/crufty-diffs.png)
 
-  This is probably why crufty was compiled in a different way 
+  This is probably why crufty was compiled in a different way
   resulting in an `XZAP` file.
 
 * Second: `zork2dat.zap`:
   Three missing lines at end of `zork2dat.zap`:
   ```
           .ENDT
-  
-  ; END LOAD                           \ 
+
+  ; END LOAD                           \
   ENDLOD::                              > missing lines
   ; PURE TABLES ARE DEFINED HERE       /
-  
+
   	.ENDI
   ```
 
@@ -1624,7 +1639,7 @@ cd zilf
 dotnet msbuild Build.proj -t:PackageAllRids -p:Configuration=Release
 ```
 Copy all `ZAP` files created by `ZILCH`
-to  [out/](out/) directory and rename the following ones from the `ITS` 
+to  [out/](out/) directory and rename the following ones from the `ITS`
 six characters to their full length:
 ```
 ># cd C:\storage\project\if\zilch.github\out
@@ -1682,7 +1697,7 @@ C:\storage\project\if\zilch.github\out># type zork2word.xzap
 WORDS:: .TABLE
         .ENDT
 
-        .ENDI 
+        .ENDI
 ```
 
 Add a new first line to `ZORK2.ZAP`:
@@ -1784,8 +1799,8 @@ And it works as well.
 
 ## Documenting `ZILCH`
 
-Since `ZILCH` delivers quite reasonable results, 
-the work on its documentation is justified 
+Since `ZILCH` delivers quite reasonable results,
+the work on its documentation is justified
 and also with regard to its historical significance.
 Let's make **`ZILCH`: The Program**.
 
@@ -1802,6 +1817,6 @@ Looking into
 * document `macros.mud`
 * use Debian only (because of problems with Ubuntu)
 * test current Debian distribution
-* look for the reason for the `zapf` warning: 
+* look for the reason for the `zapf` warning:
   ZORK2DAT.zap:945: warning: incorrect table size: expected 2357, actual 2258
 
