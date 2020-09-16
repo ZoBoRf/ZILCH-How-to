@@ -144,4 +144,4 @@
 				 <MAPLEAVE>)>>
 		     .S .SS>)>>
 
-<ENDPACKAGE>
+;<ENDPACKAGE>
