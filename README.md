@@ -806,6 +806,7 @@ Now I set the terminal type and create a `ROB LOGIN` file,
 which will be executed at next login.
 ```
 :tctyp aaa page=25 width=79 scroll
+:cwd rob
 :emacs rob login
 :tctyp aaa page=25 width=79 scroll
 ^X^S
@@ -1213,6 +1214,13 @@ FREE BLOCKS #0=13955
   0   Z2     MUD    1 ! 8/29/2020 14:20:30
   0   ZILCH  MUD    16 ! 8/29/2020 14:20:30
   0   ZORK2  ZIL    1 ! 8/29/2020 14:21:13
+```
+
+When you use a different directory name,
+change the last line in the file `Z MUD` to reflect your choice:
+```
+<SAVE-IT ("Z" "SAVE" "DSK" "Z2")>
+                            ^^
 ```
 
 ## Running ZILCH
