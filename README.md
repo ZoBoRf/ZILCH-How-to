@@ -983,7 +983,7 @@ Now let's change the channel to a real file `FOO BAR`.
 *:muddle
 <MUDDLE 56 IN OPERATION.
 LISTENING-AT-LEVEL 1 PROCESS 1
-FLOAD "FILTST">$
+<FLOAD "FILTST">$
 "DONE"
 <QUIT>$
 
@@ -1011,7 +1011,7 @@ OK, nevertheless let's try to flush the buffer before closing the file.
 *:muddle
 MUDDLE 56 IN OPERATION.
 LISTENING-AT-LEVEL 1 PROCESS 1
-<FLOAD "FILTS">$
+<FLOAD "FILTST">$
 "DONE"
 <QUIT>$
 
@@ -1398,8 +1398,6 @@ Globals: 140
          ZGNOME-FLAG
 Total code length: 417 bytes.
 ZILCH finished in 332.92018 seconds.#NULL ()
-PFTHMG DRAGON CHANNA _DRGN_ TIMES  WRITE  14:33:03
-PFTHMG DRAGON CHANNA LOGOUT TIMES  DELRNM 14:33:03
 <QUIT>$
 ```
 
@@ -1443,8 +1441,8 @@ and then we FLOAD it:
 MUDDLE 56 IN OPERATION.
 LISTENING-AT-LEVEL 1 PROCESS 1
 <FLOAD "Z2">$
-g <-- here i typed g
-      to suppress the display of
+g <-- here I typed g
+      to suppress the display of **MORE**
       after each screen of output
 ZIL Debugging Compiler 4.5
 --------------------------
