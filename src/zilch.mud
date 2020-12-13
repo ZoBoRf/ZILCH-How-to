@@ -1467,9 +1467,6 @@ Input file: ">
 		     (<PRINC "
 	.ENDI
 " .ZCHN>)>
-	       ;<PRINC "<EOF>" .ZCHN>
-	       ;<CRLF .ZCHN>
-	       <FILFIL .ZCHN>
 	       <CLOSE .ZCHN>
 	       <COND (<0? ,LEVEL>
 		      <CHECKUP>
@@ -1482,18 +1479,15 @@ Fatal errors: "
 ZILCH failed.">
 			     <COND (<AND <0? ,LEVEL>
 					 <N==? .RECCHN ,OUTCHAN>>
-				    <FILFIL .RECCHN>
 				    <CLOSE .RECCHN>)>
 			     <>)
 			    (<SET C <OPEN "PRINT" <STRING .STR "DAT"> "ZAP">>
 			     <PUT .C 13 <CHTYPE <MIN> FIX>>
 			     <DUMP .C>
-			     <FILFIL .C>
 			     <CLOSE .C>
 			     <SET C <OPEN "PRINT" <STRING .STR "STR"> "ZAP">>
 			     <PUT .C 13 <CHTYPE <MIN> FIX>>
 			     <DUMPSTR .C>
-			     <FILFIL .C>
 			     <CLOSE .C>
 			     <INFO "
 Total code length: "
@@ -1502,11 +1496,9 @@ Total code length: "
 ZILCH finished in "
 				   <- <TIME> .TIM>
 				   " seconds.">
-			     ;<FILFIL .C>
 			     <CLOSE .C>
 			     <COND (<AND <0? ,LEVEL>
 					 <N==? .RECCHN ,OUTCHAN>>
-				    <FILFIL .RECCHN>
 				    <CLOSE .RECCHN>)>
 			     ,NULL)
 			    (<COMPERR CANT-OPEN-DATA-FILE!-ERRORS>
