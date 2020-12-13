@@ -1046,20 +1046,11 @@ We put all we need to make a `Z SAVE` file into `Z MUD`:
 <NEWTYPE NULL LIST>
 <SETG NULL #NULL <>>
 
-<DEFINE AGC-HANDLER (SIZE WHAT)
-        ;<PRINT "DIVERT-AGC SIZE=">
-        ;<PRINC .SIZE>
-        ;<PRINC " WHAT=">
-        ;<PRINC .WHAT>
-        ;<CRLF>
-        <BLOAT .SIZE>>
-
 <DEFINE SETUP-EX ()
         <FLOAD "SORT MUD">
         <FLOAD "ZILCH MUD">
         <FLOAD "MACROS MUD">
-        <SETG INSERT-CRUFTY T>
-        <ON "DIVERT-AGC" ,AGC-HANDLER 1>>
+        <SETG INSERT-CRUFTY T>>
 
 <DEFINE SAVE-IT ("OPTIONAL"
         (FILE '("PUBLIC" "SAVE" "DSK" "GUEST"))
@@ -1068,8 +1059,6 @@ We put all we need to make a `Z SAVE` file into `Z MUD`:
         <COND (<=? "SAVED" <SAVE !.FILE>>
                "Saved.")
               (T
-               <ON "DIVERT-AGC" ,AGC-HANDLER 1>
-               ;<CRLF>
                <PRINC "ZILCH ready.">
                <CRLF>)>>
 
