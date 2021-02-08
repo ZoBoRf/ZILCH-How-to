@@ -104,7 +104,7 @@ masterpieces of Infocom, first of all `ZILCH`.
 Apr 30, 2019 [Lars Brinkhoff](https://twitter.com/larsbrinkhoff) made a
 single commit to the [https://github.com/PDP-10/zil](https://github.com/PDP-10/zil)
 GitHub repository.
-Lars Brinkhoff is the researcher, wo helped identifying and extracting
+Lars Brinkhoff is the researcher who helped identifying and extracting
 the original [Muddle Zork](https://github.com/MITDDC/zork) files from
 the [MIT Tapes of Tech Square (ToTS)](https://archivesspace.mit.edu/repositories/2/resources/1265) collection.
 
